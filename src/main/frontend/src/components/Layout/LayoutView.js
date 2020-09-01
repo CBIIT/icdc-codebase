@@ -17,6 +17,7 @@ import ProgramDetail from '../../pages/programDetail/programDetailController';
 import Cart from '../../pages/cart/cartController';
 import Home from '../../pages/landing/landingController';
 import About from '../../pages/about/aboutController';
+import GoogleAnalytics from '../GoogleAnalytics/GoogleAnalytics';
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
@@ -60,6 +61,7 @@ const Layout = ({ classes, isSidebarOpened }) => (
 
             <Route component={Error} />
           </Switch>
+          <GoogleAnalytics />
           <Footer data={{ isSidebarOpened }} />
         </div>
       </>

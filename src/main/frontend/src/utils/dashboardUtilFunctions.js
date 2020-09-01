@@ -1,4 +1,5 @@
 import { v1 as uuid } from 'uuid';
+import _ from 'lodash';
 
 const COLORS = [
   '#39C0F0',
@@ -154,7 +155,7 @@ export const mappingCheckBoxToDataTable = [
 
   },
   {
-    group: 'Associated File Type',
+    group: 'File Type',
     field: 'files@file_type',
     api: 'caseOverview',
     datafield: 'files@file_type',
@@ -165,7 +166,7 @@ export const mappingCheckBoxToDataTable = [
 
   },
   {
-    group: 'Associated File Format',
+    group: 'File Format',
     field: 'files@file_format',
     api: 'caseOverview',
     datafield: 'files@file_format',
@@ -186,27 +187,7 @@ export const unselectFilters = (filtersObj) => filtersObj.map((filterElement) =>
   isChecked: false,
 }));
 
-export function getStatDataFromDashboardData(data, statName) {
-  switch (statName) {
-    case 'case':
-      return [...new Set(data.filter((d) => d.case_id).map((d) => d.case_id))].length;
-    case 'study':
-      return [...new Set(data.map((d) => d.study_code))].length;
-    case 'aliquot':
-      return 0;
-    case 'sample':
-      return [...new Set(data.reduce((output, d) => output.concat(d.samples
-        ? d.samples : []), []))].length;
-    case 'file':
-      return [...new Set(data.reduce((output, d) => output.concat(d.files
-        ? d.files : []), []).map((f) => f.uuid))].length;
-    default:
-      return 0;
-  }
-}
-
 // getStudiesProgramWidgetFromDT
-
 export function getSunburstDataFromDashboardData(data) {
   // construct data tree
   const widgetData = [];
@@ -369,6 +350,84 @@ export const filterData = (row, filters) => {
   }
   return true;
 };
+
+function sayNoToParent(parent) {
+  if (parent) {
+    // not root,
+    if (Array.isArray(parent)) {
+      return false;
+    }
+    return undefined;
+  }
+  // root
+  return undefined;
+}
+
+function sayYesToParent(parent, nestedData) {
+  if (parent) {
+    // not root,
+    if (Array.isArray(parent)) {
+      return true;
+    }
+    return nestedData;
+  }
+  // root
+  return nestedData;
+}
+
+/* DFS search to get all the data for Checkbox
+  @param filter : {
+                    datafield: ["diagnosis","sdf"]
+                    groupName: "Diagnosis"
+                    isChecked: true
+                    section:"section"
+                    name: "B Cell Lymphoma"
+                  }
+*/
+/* DFS search to get all the data for Checkbox
+  @param filter : {
+                    datafield: ["diagnosis","sdf"]
+                    groupName: "Diagnosis"
+                    isChecked: true
+                    section:"section"
+                    name: "B Cell Lymphoma"
+                  }
+*/
+
+function DFSFiltering(nestedData, filter, parent) {
+  if (filter.datafield.length === 1) {
+    // do the matching job.
+    if (nestedData[filter.datafield[0]] && filter.name.includes(nestedData[filter.datafield[0]])) {
+      // match the filter
+      // tell the parent, Yes, I am your kid.
+      return sayYesToParent(parent, nestedData);
+    }
+    // not match the filter
+    // tell the parent, No, I am not your kid.
+    return sayNoToParent(parent);
+  }
+  // filter datafield not reach the end. have to go deep
+  const targetField = filter.datafield.shift();
+  if (nestedData[targetField]) {
+    // if has target the field
+    if (Array.isArray(nestedData[targetField])) {
+      // eslint-disable-next-line no-param-reassign
+      nestedData[targetField] = nestedData[targetField]
+        .filter((d) => DFSFiltering(d, filter, nestedData[targetField]));
+    } else {
+      // eslint-disable-next-line no-param-reassign
+      nestedData[targetField] = DFSFiltering(
+        nestedData[targetField],
+        filter,
+        nestedData[targetField],
+      );
+    }
+    return nestedData;
+  }
+  // target field not found
+  // tell the parent, No, I am not your kid.
+  return sayNoToParent(parent);
+}
 
 export function getFilters(orginFilter, newCheckBoxs) {
   let ogFilter = orginFilter;
@@ -574,19 +633,56 @@ export const updateCheckBoxData = (data, allCheckBoxes, activeCheckBoxes, filter
       );
 
       // filter data
-      const subData = data.filter((d) => (filterData(d, filterWithOutCurrentCate)));
+      // this is case centric filtering, because it filter the top level of the data.
+      // In this case, we give a list of cases, return a list cases match the query.
+      // however, if combines filters of sample or files will have a problem.
+      // Beacuse it returns cases not the files and sample.
+      // So we have to do the filering again to filter out the file or sample later on.
+      let subData = _.cloneDeep(data).filter((d) => (filterData(d, filterWithOutCurrentCate)));
 
-      // for the other groups
+      // merge filters in a same group.
+      let transformedfilterWithOutCurrentCate = {};
+      filterWithOutCurrentCate.forEach((f) => {
+        if (f.datafield in transformedfilterWithOutCurrentCate) {
+          transformedfilterWithOutCurrentCate[f.datafield].name.push(f.name);
+        } else {
+          transformedfilterWithOutCurrentCate[f.datafield] = _.cloneDeep(f);
+          // eslint-disable-next-line max-len
+          transformedfilterWithOutCurrentCate[f.datafield].name = [transformedfilterWithOutCurrentCate[f.datafield].name];
+        }
+      });
+      // convert to array
+      transformedfilterWithOutCurrentCate = Object.values(transformedfilterWithOutCurrentCate);
+
+      subData = subData.map((d) => {
+        // filtering
+        transformedfilterWithOutCurrentCate.forEach((f) => {
+          const filter = { ...f };
+          const filterOpts = filter.datafield.includes('@') ? filter.datafield.split('@') : [].concat(filter.datafield);
+          filter.datafield = filterOpts;
+          // eslint-disable-next-line no-param-reassign
+          d = DFSFiltering(d, _.cloneDeep(filter), undefined);
+        });
+        return d;
+      });
+      // remove underfined ones
+      subData = subData.filter((d) => {
+        if (d) { return true; } return false;
+      });
+      // Interate filter options
       checkbox.checkboxItems = checkbox.checkboxItems.map((el) => {
         const item = el;
         item.cases = 0;
 
+        // interate data
         subData.forEach((d) => {
+          // filter option name
           const fName = (item.name === NOT_PROVIDED ? '' : item.name);
 
-          // DFS get a single array
+          //  data field, define how to find the data
           const filterOpts = checkbox.datafield.includes('@') ? checkbox.datafield.split('@') : [].concat(checkbox.datafield);
 
+          // find the data and put into a array
           const rawTargetObjs = [].concat(DFSOfCheckBoxDataType2Input(d, [...filterOpts]));
 
           const targetField = filterOpts.pop();
@@ -654,4 +750,112 @@ export function formatFileSize(bytes, decimals = 2) {
   const i = Math.floor(Math.log(bytes) / Math.log(1024));
 
   return `${parseFloat((bytes / (1024 ** i)).toFixed(dm))} ${sizes[i]}`;
+}
+
+export function FileData(fileData) {
+  // combine case properties with files.
+  const transform = (accumulator, currentValue) => {
+    const caseAttrs = {};
+    Object.keys(currentValue).forEach((key) => {
+      if (key && !Array.isArray(currentValue[key])) {
+        caseAttrs[key] = currentValue[key];
+      }
+    });
+    if (currentValue.files) {
+      return accumulator.concat(currentValue.files.map((f) => ({ ...f, ...caseAttrs })));
+    }
+    return accumulator;
+  };
+
+  const tableData = fileData.data.reduce(transform, []);
+
+  // reduce duplicated records based on file's uuid
+  const result = [];
+  const map = new Map();
+  tableData.forEach((item) => {
+    if (!map.has(item.uuid)) {
+      map.set(item.uuid, true); // set any value to Map
+      result.push(item);
+    }
+  });
+
+  // get files filters
+  const filesFilters = JSON.parse(JSON.stringify(fileData)).filters
+    .filter((f) => f.section === 'file')
+    .map((f) => {
+      const tmpF = f;
+      tmpF.datafield = tmpF.datafield.includes('@') ? tmpF.datafield.split('@').pop() : tmpF.datafield;
+      return tmpF;
+    });
+
+  // filter out the records which does not match the filters
+  const tableDataAfterFilter = result.filter((row) => filterData(row, filesFilters));
+
+  return tableDataAfterFilter;
+}
+
+export function CaseData(tableData) {
+  // filter out the records which case_id is null.  ->
+  // this is for the study level file
+  return tableData.filter((d) => {
+    if (d.case_id) {
+      return true;
+    }
+    return false;
+  });
+}
+
+export function SampleData(sampleData) {
+  // combine case properties with samples.
+  const transform = (accumulator, currentValue) => {
+    const caseAttrs = {};
+    Object.keys(currentValue).forEach((key) => {
+      if (key && !Array.isArray(currentValue[key])) {
+        caseAttrs[key] = currentValue[key];
+      }
+    });
+    if (currentValue.sample_list) {
+      return accumulator.concat(currentValue.sample_list.map((f) => ({ ...f, ...caseAttrs })));
+    }
+    return accumulator;
+  };
+  const tableData = sampleData.data.reduce(transform, []);
+
+  // get sample filters
+  const sampleFilters = JSON.parse(JSON.stringify(sampleData)).filters
+    .filter((f) => f.section === 'sample')
+    .map((f) => {
+      const tmpF = f;
+      tmpF.datafield = tmpF.datafield.includes('@') ? tmpF.datafield.split('@').pop() : tmpF.datafield;
+      return tmpF;
+    });
+
+  // filter out the records which does not match the filters, plus case_id should not be null.
+  const tableDataAfterFilter = tableData
+    .filter((row) => filterData(row, sampleFilters))
+    .filter((d) => {
+      if (d.case_id) {
+        return true;
+      }
+      return false;
+    });
+
+  return tableDataAfterFilter;
+}
+
+export function getStatDataFromDashboardData(data, statName, filters) {
+  switch (statName) {
+    case 'case':
+      return [...new Set(data.filter((d) => d.case_id).map((d) => d.case_id))].length;
+    case 'study':
+      return [...new Set(data.map((d) => d.study_code))].length;
+    case 'aliquot':
+      return 0;
+    case 'sample':
+      return SampleData({ data, filters }).length;
+    case 'file':
+      return FileData({ data, filters }).length;
+    default:
+      return 0;
+  }
 }

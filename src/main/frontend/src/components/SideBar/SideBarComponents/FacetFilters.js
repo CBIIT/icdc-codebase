@@ -111,11 +111,14 @@ const FacetPanel = (classes) => {
           id="panel1bh-header"
           classes={{ root: checkedStyle }}
         >
-          <ListItemText primary={sideBarItem.groupName} />
+          <ListItemText
+            classes={{ primary: classes.classes.expansionPanelSummaryCateTitle }}
+            primary={sideBarItem.groupName}
+          />
         </ExpansionPanelSummary>
 
         <ExpansionPanelDetails>
-          <List component="div" disablePadding dense>
+          <List component="div" classes={{ root: classes.classes.nested }}>
             {
             sideBarItem.checkboxItems.map((checkboxItem) => {
               if (checkboxItem.cases === 0 && !checkboxItem.isChecked) {
@@ -136,7 +139,11 @@ const FacetPanel = (classes) => {
                   styles = classes.classes.caseCheckBox;
               }
               return (
-                <ListItem button onClick={handleToggle(`${checkboxItem.name}$$${sideBarItem.groupName}$$${sideBarItem.datafield}$$${checkboxItem.isChecked}$$${sideBarItem.section}$$${sideBarItem.key}`)} className={classes.nested}>
+                <ListItem
+                  button
+                  onClick={handleToggle(`${checkboxItem.name}$$${sideBarItem.groupName}$$${sideBarItem.datafield}$$${checkboxItem.isChecked}$$${sideBarItem.section}$$${sideBarItem.key}`)}
+                  className={classes.nested}
+                >
                   <Checkbox
                     classes={{ root: styles }}
                     checked={checkboxItem.isChecked}
@@ -204,6 +211,9 @@ const FacetPanel = (classes) => {
 };
 
 const styles = () => ({
+  nested: {
+    width: '100% !important',
+  },
   expansionPanelSummaryCateRootCases: {
     borderTop: '#F48439 solid 4px',
     background: '#EAEAEA',
@@ -224,12 +234,15 @@ const styles = () => ({
     left: '8px',
   },
   caseCheckBox: {
+    paddingLeft: '5px',
     color: '#F48439 !important',
   },
   sampleCheckBox: {
+    paddingLeft: '5px',
     color: '#05C5CC !important',
   },
   fileCheckBox: {
+    paddingLeft: '5px',
     color: '#2446C6 !important',
   },
   expansionPanelSummaryCateTitle: {
@@ -241,6 +254,7 @@ const styles = () => ({
     letterSpacing: '0.25px',
     lineHeight: '18px',
     paddingLeft: '5px',
+    width: '100%',
   },
   expansionPanelExpanded: {
     margin: 0,

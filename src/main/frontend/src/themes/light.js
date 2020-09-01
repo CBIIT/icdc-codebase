@@ -186,6 +186,11 @@ export default {
         padding: '0px',
       },
     },
+    MuiList: {
+      root: {
+        width: '100%',
+      },
+    },
     MuiListItemText: {
       root: {
         padding: '0 8px',
@@ -381,6 +386,7 @@ export default {
       root: {
         top: 0,
         bottom: 'auto',
+        height: '3px',
       },
     },
   },

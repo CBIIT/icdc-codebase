@@ -78,7 +78,16 @@ export const DASHBOARD_QUERY = gql`{
           uuid
         }
         file_formats
+        demographic{
+          weight
+        }
      }
+    case{
+      case_id
+      cohort{
+          cohort_description
+        }
+    }
   }`;
 
 export const GET_STUDYTABLE_DATA_QUERY = gql`{
@@ -131,6 +140,7 @@ export const GET_CASE_DETAIL_DATA_QUERY = gql`
             initials
         }
         diagnoses{
+            best_response
             disease_term
             stage_of_disease
             date_of_diagnosis

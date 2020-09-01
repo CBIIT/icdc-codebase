@@ -9,9 +9,9 @@ import { useDispatch } from 'react-redux';
 import StatsView from '../../../components/Stats/StatsView';
 import cn from '../../../utils/classNameConcat';
 import icon from '../../../assets/icons/Icon-Programs.svg';
-import dogForProgramDetail from '../../../assets/programCards/ProgramDetail_Image.jpg';
 import CustomBreadcrumb from '../../../components/Breadcrumb/BreadcrumbView';
 import { singleCheckBox, fetchDataForDashboardDataTable } from '../../dashboard/store/dashboardAction';
+import ProgramImageConfig from '../../../components/programImageConfig';
 
 const options = {
   selectableRows: false,
@@ -104,6 +104,9 @@ const ProgramDetailView = ({ classes, data }) => {
     isALink: true,
   }];
 
+  const programConfig = ProgramImageConfig[programDetail.program_acronym];
+  const programImage = programConfig ? programConfig.secondaryImage : '';
+
   return (
     <>
       <StatsView data={stat} />
@@ -137,14 +140,16 @@ const ProgramDetailView = ({ classes, data }) => {
                   ? programDetail.program_full_description.split('**').map((item, i) => <p key={i}>{item}</p>) : null}
               </span>
             </Grid>
+            {programConfig && (
             <Grid item lg={4} md={4} sm={4} xs={12} className={classes.detailContainerRight}>
               <img
-                src={dogForProgramDetail}
+                src={programImage}
                 alt="dog for program detail"
                 className={classes.dogImage}
               />
 
             </Grid>
+            )}
           </Grid>
         </div>
       </div>

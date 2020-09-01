@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@material-ui/core';
 import TableFooter from '@material-ui/core/TableFooter';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
@@ -6,8 +7,28 @@ import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
 
-const defaultFooterStyles = {
+import externalIcon from '../../assets/cart/ExternalLink.svg';
 
+const defaultFooterStyles = {
+  link: {
+    color: '#dc762f',
+    fontWeight: 'bolder',
+    '&:hover': {
+      color: '#dc762f',
+    },
+  },
+  linkIcon: {
+    color: '#dc762f',
+    width: '20px',
+    verticalAlign: 'sub',
+    margin: '0px 0px 0px 2px',
+  },
+  message: {
+    color: '#000000',
+    fontSize: '15px',
+    fontFamily: '"Open Sans", sans-serif',
+    lineHeight: '22px',
+  },
 };
 
 const CustomFooter = ({
@@ -31,6 +52,24 @@ const CustomFooter = ({
       />
     </TableRow>
     <TableRow>
+      <div className={classes.message} style={{ marginTop: '-8px', marginBottom: '5px' }}>
+        <span>
+          To access and analyze files: select and remove unwanted files,
+          click the “Download Manifest” button, and upload the resulting
+          Manifest file to your
+          {' '}
+          <Link target="_blank" className={classes.link} href="http://www.cancergenomicscloud.org/">
+            Seven Bridges Genomics
+          </Link>
+          <img
+            src={externalIcon}
+            alt="outbounnd web site icon"
+            className={classes.linkIcon}
+          />
+          {' '}
+          account.
+        </span>
+      </div>
       <TextField
         id="multiline-user-coments"
         label={label}

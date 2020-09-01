@@ -30,6 +30,26 @@ function postRequestFetchDataDashboard() {
 }
 
 function receiveDashboard(json) {
+  const { data } = json;
+  const cohortData = data.case.reduce((a, c) => {
+    const accumulator = a;
+    accumulator[c.case_id] = c.cohort;
+    return accumulator;
+  }, {});
+
+  data.caseOverview = data.caseOverview.map((c) => {
+    const currentValue = c;
+    currentValue.cohort_description = (cohortData[c.case_id]
+      && cohortData[c.case_id].cohort_description)
+      ? cohortData[c.case_id].cohort_description
+      : '';
+    currentValue.weight = (currentValue.demographic
+      && currentValue.demographic.weight)
+      ? currentValue.demographic.weight
+      : '';
+    return currentValue;
+  });
+
   return {
     type: RECEIVE_DASHBOARD,
     payload:

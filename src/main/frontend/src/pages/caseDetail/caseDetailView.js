@@ -68,12 +68,22 @@ const CaseDetail = ({ classes, data }) => {
     value: 0,
   });
 
-  function openSnack(value, action) {
-    setsnackbarState({ open: true, value, action });
+  function openSnack(value) {
+    setsnackbarState({ open: true, value, action: 'added' });
   }
   function closeSnack() {
     setsnackbarState({ open: false });
   }
+
+  const files = [...data.filesOfCase].map((f) => {
+    const customF = { ...f };
+    const parentSample = data.samplesByCaseId
+      .filter((s) => s.files.map((sf) => sf.uuid).includes(f.uuid));
+    if (parentSample && parentSample.length > 0) {
+      customF.sample_id = parentSample[0].sample_id;
+    }
+    return customF;
+  });
   return (
     <>
       <Snackbar
@@ -89,13 +99,15 @@ const CaseDetail = ({ classes, data }) => {
               {' '}
             </span>
             <span className={classes.snackBarText}>
+
               {snackbarState.value}
               {'    '}
               File(s) successfully
               {' '}
               {snackbarState.action}
               {' '}
-              your cart
+              to your cart
+
             </span>
           </div>
 )}
@@ -335,6 +347,17 @@ const CaseDetail = ({ classes, data }) => {
                         </Grid>
                       </Grid>
                     </Grid>
+                    <Grid item xs={12}>
+                      <Grid container spacing={4}>
+                        <Grid item xs={6}>
+                          <span className={classes.title}>RESPONSE TO TREATMENT</span>
+                        </Grid>
+                        <Grid item xs={6} className={classes.content}>
+                          {diagnosis.best_response === '' || diagnosis.best_response === null
+                            ? '' : diagnosis.best_response}
+                        </Grid>
+                      </Grid>
+                    </Grid>
                   </Grid>
                 ))}
 
@@ -463,12 +486,13 @@ const CaseDetail = ({ classes, data }) => {
           </div>
           <Grid item xs={12}>
             <GridView
-              data={data.filesOfCase}
+              data={files}
               Columns={FileColumns}
               customOnRowsSelect={FileOnRowsSelect}
               openSnack={openSnack}
               closeSnack={closeSnack}
               disableRowSelection={FileDisableRowSelection}
+              bottonText="Add Selected Files to My Cart"
             />
           </Grid>
         </div>

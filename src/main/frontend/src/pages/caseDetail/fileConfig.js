@@ -13,12 +13,25 @@ const tableStyle = (ratio = 1) => ({
 export default function FileColumns() {
   return ([
     {
-      name: 'file_name',
-      label: 'File Name',
-      sortDirection: 'asc',
+      name: 'sample_id',
+      label: 'Sample ID',
       options: {
         filter: false,
         sortDirection: 'asc',
+        customBodyRender: (value) => (
+          <div className="mui_td" style={tableStyle(2.5)}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'file_name',
+      label: 'File Name',
+      options: {
+        filter: false,
         customBodyRender: (value) => (
           <div className="mui_td" style={tableStyle(2.5)}>
             {' '}
@@ -33,7 +46,6 @@ export default function FileColumns() {
       label: 'File Type',
       options: {
         filter: false,
-        sortDirection: 'asc',
         customBodyRender: (value) => (
           <div className="mui_td" style={tableStyle(2)}>
             {' '}
@@ -48,7 +60,6 @@ export default function FileColumns() {
       label: 'Association',
       options: {
         filter: false,
-        sortDirection: 'asc',
         customBodyRender: (value) => (
           <div className="mui_td" style={tableStyle(2)}>
             {' '}
@@ -63,7 +74,6 @@ export default function FileColumns() {
       label: 'Description',
       options: {
         filter: false,
-        sortDirection: 'asc',
         customBodyRender: (value) => (
           <div className="mui_td" style={tableStyle(4)}>
             {' '}
@@ -78,7 +88,6 @@ export default function FileColumns() {
       label: 'Format',
       options: {
         filter: false,
-        sortDirection: 'asc',
         customBodyRender: (value) => (
           <div className="mui_td" style={tableStyle(2.3)}>
             {' '}

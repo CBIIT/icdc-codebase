@@ -7,13 +7,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import MUIDataTable from 'mui-datatables';
 import CustomFooter from './tabFooter';
 import { addFiles } from '../../cart/store/cartAction';
+import { FileData } from '../../../utils/dashboardUtilFunctions';
 
 const TabView = ({
-  classes, data, Columns, customOnRowsSelect, openSnack, disableRowSelection,
+  classes, data, Columns, customOnRowsSelect, openSnack, disableRowSelection, buttonTitle, tableID,
 }) => {
   const dispatch = useDispatch();
   // Get the existing files ids from  cart state
   const fileIDs = useSelector((state) => state.cart.files);
+
+  const dashboard = useSelector((state) => (state.dashboard
+&& state.dashboard.datatable
+    ? state.dashboard.datatable : {}));
 
   const saveButton = useRef(null);
 
@@ -30,6 +35,12 @@ const TabView = ({
   let selectedFileIDs = [];
 
   function exportFiles() {
+    // filter out the ones  which are not int the file tab.
+    const files = FileData(dashboard).map((f) => f.uuid);
+
+    if (files && files.length > 0) {
+      selectedFileIDs = selectedFileIDs.filter((uuid) => files.includes(uuid));
+    }
     // Find the newly added files by comparing
     const newFileIDS = fileIDs !== null ? selectedFileIDs.filter(
       (e) => !fileIDs.find((a) => e === a),
@@ -102,7 +113,7 @@ const TabView = ({
   return (
     <div>
       <Grid container>
-        <Grid item xs={12} id="table_cases">
+        <Grid item xs={12} id={tableID}>
           <MUIDataTable
             data={data}
             columns={columns}
@@ -118,7 +129,7 @@ const TabView = ({
           onClick={exportFiles}
           className={classes.button}
         >
-          ADD ASSOCIATED FILES TO MY CART
+          { buttonTitle }
         </button>
       </Grid>
     </div>
@@ -177,12 +188,20 @@ const styles = () => ({
   },
   button: {
     borderRadius: '10px',
-    width: '330px',
-    height: '27px',
+    width: '230px',
     lineHeight: '18px',
     fontSize: '10pt',
     color: '#fff',
     backgroundColor: '#ff7f15',
+  },
+  caseTableBorder: {
+    borderTopColor: '#F48439',
+  },
+  fileTableBorder: {
+    borderTopColor: '#2446C6',
+  },
+  sampleTableBorder: {
+    borderTopColor: '#05C5CC',
   },
 });
 

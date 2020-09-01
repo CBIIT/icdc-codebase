@@ -7,63 +7,71 @@ import Badge from '@material-ui/core/Badge';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../components/Wrappers/Wrappers';
 import externalIcon from '../../../assets/icons/Program-ExternalLink.svg';
-import dogForProgramDetail from '../../../assets/programCards/Program_Image.png';
+import ProgramImageConfig from '../../../components/programImageConfig';
 
 const ProgramCard = ({
   classes, data,
-}) => (
-  <div className={classes.detailContainer}>
-    <Grid container spacing={8}>
-      <Grid item lg={12} md={12} sm={12} xs={12} className={classes.header}>
-        {data.program_name}
-      </Grid>
-      <Grid item lg={8} md={8} sm={8} xs={12} className={classes.detailContainerLeft}>
+}) => {
+  const programConfig = ProgramImageConfig[data.program_acronym];
+  const programImage = programConfig ? programConfig.primaryImage : '';
+  const primaryImageAlt = programConfig ? programConfig.primaryImageAlt : '';
 
-        <Grid item lg={12} md={12} sm={12} xs={12} className={classes.content}>
-          {' '}
-          {data.program_short_description}
-          {' '}
+  return (
+    <div className={classes.detailContainer}>
+      <Grid container spacing={8}>
+        <Grid item lg={12} md={12} sm={12} xs={12} className={classes.header}>
+          {data.program_name}
         </Grid>
-        <Grid item lg={12} md={12} sm={12} xs={12}>
+        <Grid item lg={8} md={8} sm={8} xs={12} className={classes.detailContainerLeft}>
 
-          <span>
+          <Grid item lg={12} md={12} sm={12} xs={12} className={classes.content}>
+            {' '}
+            {data.program_short_description}
+            {' '}
+          </Grid>
+          <Grid item lg={12} md={12} sm={12} xs={12}>
 
-            <Button variant="contained" className={classes.button}>
-              <Link to={`/program/${data.program_acronym}`} className={classes.headerButtonLink}>
-                <span className={classes.headerButtonLinkLeft}>VIEW STUDIES </span>
-                <span className={classes.headerButtonLinkBadge}>
-                  <Badge color="primary" badgeContent={data.studies.length}> </Badge>
-                </span>
-              </Link>
-            </Button>
+            <span>
 
-          </span>
+              <Button variant="contained" className={classes.button}>
+                <Link to={`/program/${data.program_acronym}`} className={classes.headerButtonLink}>
+                  <span className={classes.headerButtonLinkLeft}>VIEW STUDIES </span>
+                  <span className={classes.headerButtonLinkBadge}>
+                    <Badge color="primary" badgeContent={data.studies.length}> </Badge>
+                  </span>
+                </Link>
+              </Button>
 
-          <span className={classes.paddingLeft15}>
-            <a href={`${data.program_external_url}`} target="icdc" className={classes.outLink}>
-              {data.program_external_url}
-            </a>
-          </span>
-          <span className={classes.paddingLeft5}>
-            <img
-              src={externalIcon}
-              alt="dog  for program detail"
-              className={classes.linkIcon}
-            />
-          </span>
+            </span>
 
+            <span className={classes.paddingLeft15}>
+              <a href={`${data.program_external_url}`} target="icdc" className={classes.outLink}>
+                {data.program_external_url}
+              </a>
+            </span>
+            <span className={classes.paddingLeft5}>
+              <img
+                src={externalIcon}
+                alt="dog  for program detail"
+                className={classes.linkIcon}
+              />
+            </span>
+
+          </Grid>
         </Grid>
+        {programConfig && (
+        <Grid item lg={4} md={4} sm={4} xs={12} className={classes.detailContainerRight}>
+          <img
+            src={programImage}
+            alt={primaryImageAlt}
+            className={classes.dogImage}
+          />
+        </Grid>
+        )}
       </Grid>
-      <Grid item lg={4} md={4} sm={4} xs={12} className={classes.detailContainerRight}>
-        <img
-          src={dogForProgramDetail}
-          alt="dog  for program detail"
-          className={classes.dogImage}
-        />
-      </Grid>
-    </Grid>
-  </div>
-);
+    </div>
+  );
+};
 
 const styles = (theme) => ({
   paddingLeft5: {

@@ -1,8 +1,5 @@
-/* eslint-disable */
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { filterData } from '../../../../utils/dashboardUtilFunctions';
 
 const tableStyle = (ratio = 1) => ({
   width: (((document.documentElement.clientWidth * 0.4) / 10) * ratio),
@@ -13,7 +10,7 @@ const tableStyle = (ratio = 1) => ({
 }
 );
 
-export function FileColumns(classes) {
+export default function FileColumns(classes) {
   return ([
     {
       name: 'file_name',
@@ -35,7 +32,6 @@ export function FileColumns(classes) {
       label: 'File Type',
       options: {
         filter: false,
-        sortDirection: 'asc',
         customBodyRender: (value) => (
           <div className="mui_td" style={tableStyle(2)}>
             {' '}
@@ -50,7 +46,6 @@ export function FileColumns(classes) {
       label: 'Association',
       options: {
         filter: false,
-        sortDirection: 'asc',
         customBodyRender: (value) => (
           <div className="mui_td" style={tableStyle(0.5)}>
             {' '}
@@ -65,7 +60,6 @@ export function FileColumns(classes) {
       label: 'Description',
       options: {
         filter: false,
-        sortDirection: 'asc',
         customBodyRender: (value) => (
           <div className="mui_td" style={tableStyle(0.5)}>
             {' '}
@@ -80,7 +74,6 @@ export function FileColumns(classes) {
       label: 'Format',
       options: {
         filter: false,
-        sortDirection: 'asc',
         customBodyRender: (value) => (
           <div className="mui_td" style={tableStyle(0.5)}>
             {' '}
@@ -95,7 +88,6 @@ export function FileColumns(classes) {
       label: 'Size',
       options: {
         filter: false,
-        sortDirection: 'asc',
         customBodyRender: (value) => (
           <div className="mui_td" style={tableStyle(0.8)}>
             {' '}
@@ -110,7 +102,6 @@ export function FileColumns(classes) {
       label: 'Case ID',
       options: {
         filter: false,
-        sortDirection: 'asc',
         customBodyRender: (value) => (
           <div className="mui_td" style={tableStyle(0.8)}>
             {' '}
@@ -139,7 +130,6 @@ export function FileColumns(classes) {
       label: 'Diagnosis',
       options: {
         filter: false,
-        sortDirection: 'asc',
         customBodyRender: (value) => (
           <div className="mui_td" style={tableStyle(2.3)}>
             {' '}
@@ -154,7 +144,6 @@ export function FileColumns(classes) {
       label: 'Study Code',
       options: {
         filter: false,
-        sortDirection: 'asc',
         customBodyRender: (value) => (
           <div className="mui_td" style={tableStyle(1.8)}>
             {' '}
@@ -165,51 +154,4 @@ export function FileColumns(classes) {
       },
     },
   ]);
-}
-
-export function FileData() {
-  // data from store
-  const fileData = useSelector((state) => (state.dashboard
-        && state.dashboard.datatable
-    ? state.dashboard.datatable : {}));
-
-  // combine case properties with files.
-  const transform = (accumulator, currentValue) => {
-    const caseAttrs = {};
-    Object.keys(currentValue).forEach((key) => {
-      if (key && !Array.isArray(currentValue[key])) {
-        caseAttrs[key] = currentValue[key];
-      }
-    });
-    if (currentValue.files) {
-      return accumulator.concat(currentValue.files.map((f) => ({ ...f, ...caseAttrs })));
-    }
-    return accumulator;
-  };
-
-  const tableData = fileData.data.reduce(transform, []);
-
-  // reduce duplicated records based on file's uuid
-  const result = [];
-  const map = new Map();
-  tableData.forEach((item) => {
-    if (!map.has(item.uuid)) {
-      map.set(item.uuid, true); // set any value to Map
-      result.push(item);
-    }
-  });
-
-  // get files filters
-  const filesFilters = JSON.parse(JSON.stringify(fileData)).filters
-    .filter((f) => f.section === 'file')
-    .map((f) => {
-      const tmpF = f;
-      tmpF.datafield = tmpF.datafield.includes('@') ? tmpF.datafield.split('@').pop() : tmpF.datafield;
-      return tmpF;
-    });
-
-  // filter out the records which does not match the filters
-  const tableDataAfterFilter = result.filter((row) => filterData(row, filesFilters));
-
-  return tableDataAfterFilter;
 }

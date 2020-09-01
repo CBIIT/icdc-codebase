@@ -430,7 +430,7 @@ const StudyDetailView = ({ classes, data }) => {
         <div className={classes.tableDiv}>
           <Grid item xs={12}>
             <div className={classes.tableTitle}>
-              <span className={classes.tableHeader}>ASSOCIATED FILES</span>
+              <span className={classes.tableHeader}>ASSOCIATED STUDY FILES</span>
             </div>
           </Grid>
           <Grid item xs={12} id="table_associated_files">
@@ -440,6 +440,7 @@ const StudyDetailView = ({ classes, data }) => {
               openSnack={openSnack}
               closeSnack={closeSnack}
               disableRowSelection={FileDisableRowSelection}
+              bottonText="Add Selected Files to My Cart"
               data={data.studyFiles === null || data.studyFiles === '' ? [] : data.studyFiles.map((file) => {
                 const cFile = { ...file };
                 cFile.parent = 'Study';

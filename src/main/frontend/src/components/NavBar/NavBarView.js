@@ -217,7 +217,6 @@ const NavBar = ({
               <Button
                 variant="outlined"
                 disabled={activeFilters.length === 0}
-                onCl
                 className={classes.customButton}
                 classes={{ root: classes.clearAllButtonRoot }}
                 onClick={() => dispatch(toggleCheckBox(unselectFilters(activeFilters)))}
