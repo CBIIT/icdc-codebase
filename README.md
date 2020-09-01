@@ -2,7 +2,7 @@
 
 #  ![ Image 1](doc/logo.png)
 
-Integrated Canine Data Commons (ICDC) project is a joint project between FNL's ADRD and BIDS Directorates to develop the ICDC for NCI's DCTD group.
+The [Integrated Canine Data Commons (ICDC) project](http://caninecommons.cancer.gov/) is a joint project between FNL's ADRD and BIDS Directorates to develop the ICDC for NCI's DCTD group.
 
 The ICDC will  create a new, dynamic data commons for canine cancer data, including not only clinical outcomes and genomics findings from canine clinical trials being conducted by the Comparative Oncology Program (COP) in collaboration with DCTD, but also the trials’ molecular, pharmacological, microenvironment, medical imaging and other study data.
 
