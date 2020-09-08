@@ -320,9 +320,10 @@ const cartView = ({ classes, data, isLoading }) => {
   function divStyle() {
     const css = {
       position: 'absolute',
-      marginTop: '-47px',
+      marginTop: '-51px',
       marginLeft: '30px',
       display: 'none',
+      padding: '0 16px',
     };
     if (isLoading === false) {
       css.display = 'block';
@@ -369,7 +370,7 @@ const cartView = ({ classes, data, isLoading }) => {
           <DialogContentText id="alert-dialog-description">
             { modalStatus.selectedFiles.length }
             {' '}
-            File(s) will be removed from your cart
+            File(s) will be removed from your Files
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -420,7 +421,7 @@ const cartView = ({ classes, data, isLoading }) => {
               ref={deleteButton}
               onClick={removeFiles}
             >
-              Remove From Your Cart
+              Remove From Your Files
             </button>
           </div>
         </div>

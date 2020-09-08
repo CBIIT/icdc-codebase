@@ -58,6 +58,8 @@ const Layout = ({ classes, isSidebarOpened }) => (
             <Route path="/developers" component={About} />
             <Route path="/support" component={About} />
             <Route path="/submit" component={About} />
+            <Route path="/BPSC" component={About} />
+            <Route path="/DGAB" component={About} />
 
             <Route component={Error} />
           </Switch>

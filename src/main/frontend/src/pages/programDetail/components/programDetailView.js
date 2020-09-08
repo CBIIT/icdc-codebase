@@ -306,7 +306,7 @@ const styles = (theme) => ({
   },
   detailContainerLeft: {
     padding: '20px 0px 30px 2px !important',
-    minHeight: '330px',
+    minHeight: '100px',
   },
   detailContainerRight: {
     padding: '20px 20px 30px 20px !important',
@@ -357,7 +357,6 @@ const styles = (theme) => ({
     fontSize: '17px',
     letterSpacing: '0.017em',
     color: '#1db634',
-    paddingBottom: '20px',
   },
 });
 

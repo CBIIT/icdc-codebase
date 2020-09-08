@@ -43,6 +43,12 @@ const About = ({ match }) => {
         case '/steeringCommittee':
           supportObj.image = committeeImg;
           break;
+        case '/DGAB':
+          supportObj.image = committeeImg;
+          break;
+        case '/BPSC':
+          supportObj.image = committeeImg;
+          break;
         case '/support':
           supportObj.image = supportImg;
           break;
@@ -62,12 +68,14 @@ const About = ({ match }) => {
 
   return (
     <>
-      <AboutBody data={{
-        img: data.image ? data.image : '',
-        title: data.title ? data.title : '',
-        content: data.content ? data.content : '',
-        table: data.table ? data.table : '',
-      }}
+      <AboutBody
+        key={match.path + data.title}
+        data={{
+          img: data.image ? data.image : '',
+          title: data.title ? data.title : '',
+          content: data.content ? data.content : '',
+          table: data.table ? data.table : '',
+        }}
       />
     </>
   );

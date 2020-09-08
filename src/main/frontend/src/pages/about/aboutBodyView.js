@@ -3,7 +3,6 @@ import { Grid, withStyles, Link } from '@material-ui/core';
 import Header from '../../components/About/HeaderView';
 import Stats from '../../components/Stats/AllStatsController';
 import externalIcon from '../../assets/about/About-ExternalLink.svg';
-import submissionGuide from '../../assets/footer/ICDC_DGAB_Guidelines.pdf';
 
 const AboutBody = ({ classes, data }) => {
   function boldText(text) {
@@ -111,11 +110,18 @@ const AboutBody = ({ classes, data }) => {
                         if (splitedParagraph != null && (/\*(.*)\*/.test(splitedParagraph))) {
                           return (<span className={classes.title}>{splitedParagraph.match(/\*(.*)\*/).pop()}</span>);
                         }
-                        // For downloading Submission PDF
+                        // For downloading things
                         if (splitedParagraph != null && (/{(.*)}/.test(splitedParagraph))) {
+                          const downloadAttrs = splitedParagraph.match(/{(.*)}/).pop().split(',');
+                          const downloadLink = downloadAttrs.find((link) => link.includes('link:'));
+                          const downloadTitle = downloadAttrs.find((link) => link.includes('title:'));
                           return (
-                            <Link target="_blank" className={classes.link} href={submissionGuide}>
-                              {splitedParagraph.match(/{(.*)}/).pop()}
+                            <Link
+                              target="_blank"
+                              className={classes.link}
+                              href={downloadLink ? downloadLink.replace('link:', '') : ''}
+                            >
+                              {downloadTitle ? downloadTitle.replace('title:', '') : ''}
                             </Link>
                           );
                         }

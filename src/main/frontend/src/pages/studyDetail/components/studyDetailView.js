@@ -253,7 +253,7 @@ const StudyDetailView = ({ classes, data }) => {
               {' '}
               {snackbarState.action}
               {' '}
-              your cart
+              your files
             </span>
           </div>
 )}
@@ -440,7 +440,7 @@ const StudyDetailView = ({ classes, data }) => {
               openSnack={openSnack}
               closeSnack={closeSnack}
               disableRowSelection={FileDisableRowSelection}
-              bottonText="Add Selected Files to My Cart"
+              bottonText="Add Selected Files to My Files"
               data={data.studyFiles === null || data.studyFiles === '' ? [] : data.studyFiles.map((file) => {
                 const cFile = { ...file };
                 cFile.parent = 'Study';

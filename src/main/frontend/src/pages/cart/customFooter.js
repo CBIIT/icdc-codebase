@@ -28,6 +28,16 @@ const defaultFooterStyles = {
     fontSize: '15px',
     fontFamily: '"Open Sans", sans-serif',
     lineHeight: '22px',
+    marginTop: '-8px',
+    marginBottom: '5px',
+  },
+  comment: {
+    '& div': {
+      padding: '0 16px',
+    },
+    '& label': {
+      padding: '0 16px',
+    },
   },
 };
 
@@ -51,8 +61,8 @@ const CustomFooter = ({
         onChangeRowsPerPage={onChangeRowsPerPage}
       />
     </TableRow>
-    <TableRow>
-      <div className={classes.message} style={{ marginTop: '-8px', marginBottom: '5px' }}>
+    <TableRow className={classes.comment}>
+      <div className={classes.message}>
         <span>
           To access and analyze files: select and remove unwanted files,
           click the “Download Manifest” button, and upload the resulting

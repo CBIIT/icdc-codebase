@@ -64,6 +64,7 @@ const FacetPanel = (classes) => {
   function FacetFilterWrapper(children, name, styles) {
     return (
       <ExpansionPanel
+        key={name}
         expanded={groupExpanded.includes(name)}
         onChange={handleGroupChange(name)}
         classes={{ expanded: classes.classes.expansionPanelExpanded }}
@@ -77,10 +78,10 @@ const FacetPanel = (classes) => {
             expandIcon: classes.classes.expansionPanelSummaryCateRootExpandIcon,
           }}
         >
-          <ListItemText classes={{ primary: classes.classes.expansionPanelSummaryCateTitle }} primary={`Filter By ${name[0].toUpperCase()}${name.slice(1)}s`} />
+          <ListItemText key={name} classes={{ primary: classes.classes.expansionPanelSummaryCateTitle }} primary={`Filter By ${name[0].toUpperCase()}${name.slice(1)}s`} />
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <List component="div" disablePadding dense>
+          <List component="div" disablePadding>
             {children}
           </List>
         </ExpansionPanelDetails>
@@ -101,6 +102,7 @@ const FacetPanel = (classes) => {
     }
     return (
       <ExpansionPanel
+        key={sideBarItem.groupName}
         expanded={expanded === sideBarItem.groupName}
         onChange={handleChange(sideBarItem.groupName)}
         classes={{ expanded: classes.classes.expansionPanelExpanded }}
@@ -118,7 +120,7 @@ const FacetPanel = (classes) => {
         </ExpansionPanelSummary>
 
         <ExpansionPanelDetails>
-          <List component="div" classes={{ root: classes.classes.nested }}>
+          <List key={sideBarItem.groupName} component="div" classes={{ root: classes.classes.nested }}>
             {
             sideBarItem.checkboxItems.map((checkboxItem) => {
               if (checkboxItem.cases === 0 && !checkboxItem.isChecked) {
@@ -143,6 +145,7 @@ const FacetPanel = (classes) => {
                   button
                   onClick={handleToggle(`${checkboxItem.name}$$${sideBarItem.groupName}$$${sideBarItem.datafield}$$${checkboxItem.isChecked}$$${sideBarItem.section}$$${sideBarItem.key}`)}
                   className={classes.nested}
+                  key={`${checkboxItem.name}$$${sideBarItem.groupName}$$${sideBarItem.datafield}$$${checkboxItem.isChecked}$$${sideBarItem.section}$$${sideBarItem.key}`}
                 >
                   <Checkbox
                     classes={{ root: styles }}

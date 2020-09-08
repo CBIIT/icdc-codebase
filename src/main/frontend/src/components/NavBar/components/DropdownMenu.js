@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import {
   withStyles, Paper,
 } from '@material-ui/core';
+import cn from '../../../utils/classNameConcat';
 
 const CustomDropdownMenu = ({ classes, handleClick }) => (
   <>
@@ -23,6 +24,22 @@ const CustomDropdownMenu = ({ classes, handleClick }) => (
           onClick={handleClick}
         >
           Steering Committee
+        </NavLink>
+        <NavLink
+          className={cn(classes.sublink, classes.link)}
+          activeStyle={{ color: 'white' }}
+          to="/DGAB"
+          onClick={handleClick}
+        >
+          - DGAB
+        </NavLink>
+        <NavLink
+          className={cn(classes.sublink, classes.link)}
+          activeStyle={{ color: 'white' }}
+          to="/BPSC"
+          onClick={handleClick}
+        >
+          - BPSC
         </NavLink>
         <NavLink
           className={classes.link}
@@ -78,6 +95,10 @@ const styles = (theme) => ({
     position: 'absolute',
     marginTop: '-5px',
     borderRadius: '0',
+  },
+  sublink: {
+    paddingLeft: '20px',
+    fontSize: '11px !important',
   },
   link: {
     textDecoration: 'none',

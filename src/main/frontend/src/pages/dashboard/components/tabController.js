@@ -116,7 +116,7 @@ const tabController = (classes) => {
             <span className={classes.snackBarText}>
               {snackbarState.value}
               {' '}
-              File(s) successfully added to your cart
+              File(s) successfully added to your files
             </span>
           </div>
 )}
@@ -178,7 +178,7 @@ const tabController = (classes) => {
               openSnack={openSnack}
               closeSnack={closeSnack}
               disableRowSelection={FileDisableRowSelection}
-              buttonTitle=" Add Selected Files to My Cart"
+              buttonTitle=" Add Selected Files to My Files"
               tableID="file_tab_table"
             />
           </TabContainer>
