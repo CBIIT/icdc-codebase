@@ -24,7 +24,7 @@
     - 
       paragraph: "The Data Governance Advisory Board (DGAB) consists of 4 external members (all from ICDC Steering Committee), 2 NIH members (1 of whom is from CBIIT) and is supported by FNLCR staff. When researchers request their data ($${title:submission guide [PDF],link:https://github.com/CBIIT/icdc-codebase/raw/master/src/main/frontend/src/content/files/ICDC_DGAB_Guidelines.pdf}$$) to be added to the ICDC to be shared with the community, the role of the DGAB is to advise the NCI on the suitability of request. The NCI makes the final decision on the request. The DGAB is chaired by a non-NIH member of ICDC Steering Committee. The DGAB meets at least quarterly to review and prioritize all open and complete requests."
     -
-    	paragraph: "The $$[current studies](https://wiki.nci.nih.gov/display/ICDC/Study+Priority+Listing)$$ and their priority are listed on the ICDC project wiki.""
+      paragraph: "The $$[current studies](https://wiki.nci.nih.gov/display/ICDC/Study+Priority+Listing)$$ and their priority are listed on the ICDC project wiki.""
     -
       paragraph: "$$@DGAB Composition:@$$"
     -
