@@ -216,7 +216,7 @@
             - name
             - institution
             - affliation
-            - subcommitee
+            - "Subcommitee(s)""
         - 
           body: 
             - 
