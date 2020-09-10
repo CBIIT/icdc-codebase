@@ -10,9 +10,115 @@
 - 
   content: 
     - 
-      paragraph: "NCI's Division of Cancer Treatment and Diagnosis (DCTD) charged the Frederick National Laboratory for Cancer Research (FNLCR) to build the Integrated Canine Data Commons (ICDC), a cloud-based repository of spontaneously-arising canine cancer data. ICDC was established to further research on human cancers by enabling comparative analysis with canine cancer. The data in the ICDC is sourced from multiple different programs and projects; all focused on canine subjects. The data is harmonized into an integrated data model and then made available to the research community. The ICDC is part of the Cancer Research Data Commons (CRDC), an initiative from NCI’s Center for Biomedical Informatics and Information Technology (CBIIT). Bioinformatic analysis of the ICDC data is accomplished using the CRDC’s $$[Cloud Resources](target:_self url:/#/crdc type:0)$$."
+      paragraph: "The Best Practices SubCommittee has the responsibility for identifying and recommending best practices that the Integrated Canine Data Commons (ICDC) will implement to streamline and harmonize data collection, standardize data formats and platforms, and manage and annotate data (especially clinical data). The ICDC will encompass clinical, pathologic, genomic, biomarker and imaging data. The overall goal of BPSC will be to streamline and standardize data collection and management for canine studies.  The BPSC will examine past and planned studies and will recommend prospective standards for data collection and management including clinical, pathologic, and sequencing data."
     - 
-      paragraph: "Within the FNLCR, the Biomedical Informatics and Data Science (BIDS) Directorate is focused on software engineering and data science. The Applied and Developmental Research Directorate (ADRD) is managing the ICDC Steering Committee and providing one of the data sources for the ICDC. Finally, there is also an ICDC Steering Committee (composed of external members, FNLCR and NCI staff) that provides advice to DCTD on the ICDC."
+      paragraph: "The BPSC has focused on four working groups: Imaging, Clinical/Pathology, Genomics and Immunology and is composed of the following members of the ICDC Steering Committee:"
+    -
+      table:
+        -
+          head:
+            - name
+            - position
+            - affiliation
+            - "Working Group(s)"
+        -
+          body:
+            - 
+              row:
+                - "Jeff Trent"
+                - "Chair, BPSC"
+                - "Translational Genomics Research Institute (TGen)"
+                - 
+            - 
+              row: 
+                - "M.R. Chambers"
+                - "Chair, Clin/Path WG"
+                - "University of Alabama at Birmingham"
+                - "Clinical/Pathology"
+            - 
+              row: 
+                - "Dawn Duval"
+                - "Member"
+                - "Colorado State University"
+                - "Genomics"
+            -
+              row:
+                - "Heather Gardner"
+                - "Member"
+                - "Translational Genomics Research Institute (TGen)"
+                - "Genomics"
+            - 
+              row: 
+                - "Allison Heath"
+                - "Co-Chair, Genomics WG"
+                - "Children’s Hospital of Philadelphia"
+                - "Genomics"
+            - 
+              row: 
+                - "Toby Hecht"
+                - "Member"
+                - "NIH/NCI/DCTD"
+                - "Immunology"
+            - 
+              row: 
+                - "Paula Jacobs"
+                - "Co-Chair, Imaging WG"
+                - "NIH/NCI/DCTD/CIP"
+                - "Imaging"
+            - 
+              row: 
+                - "Amy LeBlanc"
+                - "Co-Chair, Imaging WG"
+                - "NIH/NCI/CCR/COP"
+                - "Imaging"
+            - 
+              row: 
+                - "Deborah Knapp"
+                - "Co-Chair, Immunology WG"
+                - "Purdue University"
+                - "Clinical/Pathology, Immunology"
+            - 
+              row: 
+                - "Cheryl London"
+                - "Co-Chair, Clin/Path WG, Co-Chair, Immunology WG"
+                - "Tufts University"
+                - "Clincal/Pathology, Immunology"
+            - 
+              row: 
+                - "Elaine Ostrander"
+                - "Member"
+                - "NIH/NHGRI/CGCGB"
+                - "Genomics"
+            -
+              row: 
+                - "Connie Sommers"
+                - "Member"
+                - "NIH/NCI/DCTD/DTP/IOB"
+                - "Immunology"
+            - 
+              row: 
+                - "Shaying Zhao"
+                - "Co-Chair, Genomics WG"
+                - "University of Georgia"
+                - "Genomics, Immunology"
+            - 
+              row: 
+                - "Matthew Beyers"
+                - "Coordinator"
+                - "FNL"
+                - 
+            - 
+              row: 
+                - "Philip Musk"
+                - "Data Subject Matter Expert"
+                - "FNL"
+                - 
+    -
+      paragraph: "$$@Working Group Goals:@$$"
+    -
+      paragraph: "$$@Imaging@$$: Our overarching objective is to provide the comparative cancer research community with guidelines and best practices for the collection, formatting and reporting of imaging data collected from canine companion animals with naturally-occurring cancers into the Integrated Canine Data Commons (ICDC). This is to facilitate the utilization and analysis of such data by stakeholders in the cancer research community to facilitate dog-to-human translational research and advancement of knowledge in the comparative space."
+    -
+      paragraph: "$$@Genomics@$$: Provide an overview of next generation sequencing (NGS) study design, assays and analysis approaches (focusing on genomics and transcriptomics) utilized by diverse canine cancer research teams alongside annotation of validation studies, canine-specific tool needs, and parameters; Identify common elements across published analyses; Establish general principles in canine cancer genomics best practices modeled on human cancer genomics best practice principles; Identify gaps in canine cancer genomics best practices and propose solutions."
   page: /BPSC
   title: BPSC
 - 
@@ -87,7 +193,7 @@
               row:
                 - "Amy LeBlanc"
                 - "Member"
-                - "NIH/NCI/CCR/COP                               "
+                - "NIH/NCI/CCR/COP"
             -
               row:
                 - "Javed Kahn"
