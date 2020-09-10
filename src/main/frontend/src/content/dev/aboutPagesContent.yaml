@@ -34,7 +34,8 @@
             - affiliation
         -
           body:
-            - row:
+            - 
+            	row:
                 - "Warren Kibbe"
                 - "Chair"
                 - "Duke University"
