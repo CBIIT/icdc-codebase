@@ -18,10 +18,79 @@
 - 
   content: 
     -
-      paragraph: $$@Background:@$$
+      paragraph: "$$@Background:@$$"
     -
-      paragraph: The Integrated Canine Data Commons (ICDC) will receive data from many projects and provide the community with relevant access to that data. Not all requests to have ICDC receive data can be accommodated due to the ICDC’s focus and the effort and costs associated with bringing the data into the ICDC. Therefore, the ICDC must develop, document and adhere to a Data Governance Process.
-  page: /DGAB
+      paragraph: "The Integrated Canine Data Commons (ICDC) will receive data from many projects and provide the community with relevant access to that data. Not all requests to have ICDC receive data can be accommodated due to the ICDC’s focus and the effort and costs associated with bringing the data into the ICDC. Therefore, the ICDC must develop, document and adhere to a Data Governance Process."
+    - 
+      paragraph: "The DGAB consists of 4 external members (all from ICDC Steering Committee), 2 NIH members (1 of whom is from CBIIT) and is supported by FNLCR staff. When researchers request their data ($${title:submission guide [PDF],link:https://github.com/CBIIT/icdc-codebase/raw/master/src/main/frontend/src/content/files/ICDC_DGAB_Guidelines.pdf}$$) to be added to the ICDC to be shared with the community, the role of the DGAB is to advise the NCI on the suitability of request. The NCI makes the final decision on the request. The DGAB is chaired by a non-NIH member of ICDC Steering Committee. The DGAB meets at least quarterly to review and prioritize all open and complete requests."
+    -
+      paragraph: "$$@DGAB Composition:@$$"
+    -
+      table:
+        -
+          head:
+            - name
+            - position
+            - affiliation
+        -
+          body:
+            - row:
+                - "Warren Kibbe"
+                - "Chair"
+                - "Duke University"
+            -
+              row:
+                - "Matthew Breen"
+                - "Member"
+                - "North Carolina State University"
+            -
+              row:
+                - "William Hendricks"
+                - "Member"
+                - "Translational Genomics Research Institute (TGen)"
+            -
+              row:
+                - "Roel Verhaak"
+                - "Member"
+                - "The Jackson Laboratory"
+            -
+              row:
+                - "Greg Tawa"
+                - "Member"
+                - "NIH/TRNDP/NCATS"
+            -
+              row:
+                - "Erika Kim"
+                - "Member"
+                - "NIH/NCI/CBIIT"
+    -
+      paragraph: "$$@NCI Senior Advisory Committee:@$$"
+    -
+      paragraph: "The NCI Senior Advisory Committee serves as the final point of approval and prioritization for studies, and as the final deciding point of any re-prioritization that becomes necessary."
+    -
+      table:
+        -
+          head:
+            - name
+            - position
+            - affiliation
+        -
+          body:
+            - row:
+                - "Connie Sommers"
+                - "Chair"
+                - "NIH/NCI/DCTD"
+            -
+              row:
+                - "Amy LeBlanc"
+                - "Member"
+                - "NIH/NCI/CCR/COP"
+            -
+              row:
+                - "Javed Kahn"
+                - "Member"
+                - "NIH/NCI/CCR/CGB"
+page: /DGAB
   title: DGAB
 - 
   content: 
@@ -29,8 +98,6 @@
       paragraph: "The ICDC (Integrated Canine Data Commons) is community driven and built with input and collaboration from many groups to foster a diversity of ideas and to ensure needs are identified across the broad Research Community . To achieve this collaboration, the ICDC Steering Committee was formed to advise the NCI and FNLCR on the ICDC. The Steering Committee is composed of 11 members from the non-NIH research community, 7 from NCI, 1 from NHGRI and 1 from NCATS. There is also 1 observer from the NCI and 4 ex-officio members who are FNLCR staff. The chairperson is from the non-NIH research community."
     - 
       paragraph: "The Steering Committee has two sub-committees; $$[Data Governance Advisory Board](target:_self url:/#/dgab type:0)$$ (DGAB) and the $$[Best Practices Sub-Committee](target:_self url:/#/bpsc type:0)$$ (BPSC)."
-    - 
-      paragraph: "The DGAB consists of 4 external members (all from ICDC Steering Committee), 2 NIH members (1 of whom is from CBIIT) and is supported by FNLCR staff. When researchers request their data ($${title:submission guide [PDF],link:https://github.com/CBIIT/icdc-codebase/raw/master/src/main/frontend/src/content/files/ICDC_DGAB_Guidelines.pdf}$$) to be added to the ICDC to be shared with the community, the role of the DGAB is to advise the NCI on the suitability of request. The NCI makes the final decision on the request. The DGAB is chaired by a non-NIH member of ICDC Steering Committee. The DGAB meets at least quarterly to review and prioritize all open and complete requests."
     - 
       paragraph: "The BPSC consists of 7 external members (all from ICDC Steering Committee), 3 NCI staff, 1 NHGRI staff and is supported by FNLCR staff. The overall goal of the BPSC is to streamline and standardize data collection and management for canine studies. The BPSC examines past and planned studies and recommends prospective standards for data collection and management in four main areas; imaging, clinical/pathology, immunology and genomic/sequencing data."
     - 
