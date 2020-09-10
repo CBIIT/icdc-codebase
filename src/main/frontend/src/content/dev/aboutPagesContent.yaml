@@ -12,6 +12,8 @@
     - 
       paragraph: "The Best Practices SubCommittee has the responsibility for identifying and recommending best practices that the Integrated Canine Data Commons (ICDC) will implement to streamline and harmonize data collection, standardize data formats and platforms, and manage and annotate data (especially clinical data). The ICDC will encompass clinical, pathologic, genomic, biomarker and imaging data. The overall goal of BPSC will be to streamline and standardize data collection and management for canine studies.  The BPSC will examine past and planned studies and will recommend prospective standards for data collection and management including clinical, pathologic, and sequencing data."
     - 
+      paragraph: "The BPSC consists of 8 external members, 4 NCI staff, 1 NHGRI staff and is supported by FNLCR staff. The overall goal of the BPSC is to streamline and standardize data collection and management for canine studies. The BPSC examines past and planned studies and recommends prospective standards for data collection and management in four main areas; imaging, clinical/pathology, immunology and genomic/sequencing data."
+    - 
       paragraph: "The BPSC has focused on four working groups: Imaging, Clinical/Pathology, Genomics and Immunology and is composed of the following members of the ICDC Steering Committee:"
     -
       table:
@@ -105,13 +107,13 @@
               row: 
                 - "Matthew Beyers"
                 - "Coordinator"
-                - "FNL"
+                - "FNLCR"
                 - "-"
             - 
               row: 
                 - "Philip Musk"
                 - "Data Subject Matter Expert"
-                - "FNL"
+                - "FNLCR"
                 - "-"
     -
       paragraph: "$$@Working Group Goals:@$$"
@@ -207,8 +209,6 @@
       paragraph: "The ICDC (Integrated Canine Data Commons) is community driven and built with input and collaboration from many groups to foster a diversity of ideas and to ensure needs are identified across the broad Research Community . To achieve this collaboration, the ICDC Steering Committee was formed to advise the NCI and FNLCR on the ICDC. The Steering Committee is composed of 11 members from the non-NIH research community, 7 from NCI, 1 from NHGRI and 1 from NCATS. There is also 1 observer from the NCI and 4 ex-officio members who are FNLCR staff. The chairperson is from the non-NIH research community."
     - 
       paragraph: "The Steering Committee has two sub-committees; $$[Data Governance Advisory Board](target:_self url:/#/dgab type:0)$$ (DGAB) and the $$[Best Practices Sub-Committee](target:_self url:/#/bpsc type:0)$$ (BPSC)."
-    - 
-      paragraph: "The BPSC consists of 7 external members (all from ICDC Steering Committee), 3 NCI staff, 1 NHGRI staff and is supported by FNLCR staff. The overall goal of the BPSC is to streamline and standardize data collection and management for canine studies. The BPSC examines past and planned studies and recommends prospective standards for data collection and management in four main areas; imaging, clinical/pathology, immunology and genomic/sequencing data."
     - 
       table: 
         - 
