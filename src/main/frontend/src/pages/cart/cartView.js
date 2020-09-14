@@ -11,6 +11,7 @@ import MUIDataTable from 'mui-datatables';
 import icon from '../../assets/icons/Icon-MyCases.svg';
 import CustomFooter from './customFooter';
 import SkeletonTable from './components/skeletonTable';
+import GA from '../../utils/googleAnalytics';
 import { deleteFiles } from './store/cartAction';
 
 const tableStyle = (ratio = 1) => ({
@@ -43,6 +44,7 @@ const cartView = ({ classes, data, isLoading }) => {
   }
   function deleteFilesAndCloseModal() {
     closeModal();
+    GA.sendEvent('File', 'Removed', null, `${modalStatus.selectedFiles.length} Files`);
     dispatch(deleteFiles({ files: modalStatus.selectedFiles }));
     selectedFileIDs = [];
   }
@@ -115,6 +117,7 @@ const cartView = ({ classes, data, isLoading }) => {
   }
 
   function downloadJson() {
+    GA.sendEvent('Manifest', 'Download', 'cart');
     const jsonse = JSON.stringify(data);
     const csv = convertToCSV(jsonse);
     const exportData = new Blob([csv], { type: 'text/csv' });

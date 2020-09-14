@@ -133,6 +133,11 @@ const StatsView = ({ classes, data }) => (
 );
 
 const styles = (theme) => ({
+  statsContainer: {
+    position: 'fixed',
+    width: 'inherit !important',
+    zIndex: '999',
+  },
   card: {
     minHeight: '100%',
     display: 'flex',

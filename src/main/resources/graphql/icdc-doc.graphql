@@ -666,6 +666,14 @@ type FileInfo {
   url: String
 }
 
+type StudyStat {
+  study_code: String
+  files: Int
+  totoal_size_MB: Float
+  cases: Int
+  samples: Int
+}
+
 type QueryType {
   "Version"
   schemaVersion: String 
@@ -725,4 +733,6 @@ type QueryType {
   fileDetail(file_ids: [String] = []): [FileDetail] 
   "For IndexD to replace manifest"
   fileInfo(file_ids: [String] = []): [FileInfo] 
+
+  studyStats: [StudyStat] 
 }

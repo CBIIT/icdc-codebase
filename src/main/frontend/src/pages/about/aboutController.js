@@ -29,6 +29,8 @@ const About = ({ match }) => {
       }
 
       const supportObj = resultData.find(({ page }) => page === match.path);
+      supportObj.imageAlt = supportObj.imageAlt === undefined
+        ? 'about' : supportObj.imageAlt;
 
       switch (match.path) {
         case '/crdc':
@@ -39,6 +41,7 @@ const About = ({ match }) => {
           break;
         case '/purpose':
           supportObj.image = purposeImg;
+          supportObj.imageAlt = 'purpose';
           break;
         case '/steeringCommittee':
           supportObj.image = committeeImg;
@@ -72,6 +75,7 @@ const About = ({ match }) => {
         key={match.path + data.title}
         data={{
           img: data.image ? data.image : '',
+          imageAlt: data.imageAlt ? data.imageAlt : '',
           title: data.title ? data.title : '',
           content: data.content ? data.content : '',
           table: data.table ? data.table : '',

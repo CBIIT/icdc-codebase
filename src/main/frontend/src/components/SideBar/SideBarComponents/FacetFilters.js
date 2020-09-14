@@ -142,19 +142,21 @@ const FacetPanel = (classes) => {
               }
               return (
                 <ListItem
+                  id={checkboxItem.name}
                   button
                   onClick={handleToggle(`${checkboxItem.name}$$${sideBarItem.groupName}$$${sideBarItem.datafield}$$${checkboxItem.isChecked}$$${sideBarItem.section}$$${sideBarItem.key}`)}
                   className={classes.nested}
                   key={`${checkboxItem.name}$$${sideBarItem.groupName}$$${sideBarItem.datafield}$$${checkboxItem.isChecked}$$${sideBarItem.section}$$${sideBarItem.key}`}
                 >
                   <Checkbox
+                    id={`checkbox_${checkboxItem.name}`}
                     classes={{ root: styles }}
                     checked={checkboxItem.isChecked}
                     tabIndex={-1}
                     disableRipple
                   />
                   <ListItemText primary={(
-                    <div style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex' }} id={`content_${checkboxItem.name}`}>
                       <Typography>
                         {checkboxItem.name}
                       </Typography>

@@ -22,11 +22,13 @@ const AboutBody = ({ classes, data }) => {
   return (
     <>
       <Stats />
-      <Header title={data.title} />
+      <div className={classes.paddingTop60}>
+        <Header title={data.title} className={classes.container} />
+      </div>
       <div className={classes.container}>
         <Grid container spacing={16} direction="row" className={classes.aboutSection}>
           <Grid item lg={3} md={3} sm={12} xs={12} className={classes.leftSection}>
-            <img className={classes.img} src={data.img} alt="about" />
+            <img className={classes.img} src={data.img} alt={data.imageAlt} />
           </Grid>
           <Grid item lg={9} md={9} sm={12} xs={12} className={classes.rightSection}>
             <span className={classes.text}>
@@ -137,11 +139,25 @@ const AboutBody = ({ classes, data }) => {
                         <thead className={classes.tableHeader}>
                           <tr className={classes.tableBodyRow}>
                             <th className={classes.headerCell} aria-label="Index" />
-                            { contentObj.table[0].head.map((rowObj) => (
-                              <>
-                                <th className={classes.headerCell}>{rowObj}</th>
-                              </>
-                            )) }
+                            { contentObj.table[0].head.map((rowObj) => {
+                              let outputHTML = <th className={classes.headerCell}>{rowObj}</th>;
+                              if (rowObj != null && (/{(.*)}/.test(rowObj))) {
+                                const thAttrs = rowObj.match(/{(.*)}/).pop().split('$$');
+                                const inlineStyleStr = thAttrs.find((thAttr) => thAttr.includes('style:')).replace('style:', '').replace(/'/g, '');
+                                const inlineStyleMap = {};
+                                inlineStyleStr.split(',').forEach((style) => {
+                                  // eslint-disable-next-line prefer-destructuring
+                                  inlineStyleMap[style.split(':')[0]] = style.split(':')[1];
+                                });
+                                const text = thAttrs.find((thAttr) => thAttr.includes('text:'));
+                                outputHTML = (
+                                  <th className={classes.headerCell} style={inlineStyleMap}>
+                                    {text.replace('text:', '')}
+                                  </th>
+                                );
+                              }
+                              return outputHTML;
+                            })}
                           </tr>
                         </thead>
                         <tbody>
@@ -150,7 +166,29 @@ const AboutBody = ({ classes, data }) => {
                               <tr className={classes.tableBodyRow}>
                                 <td className={classes.tableCell}>{index + 1}</td>
                                 {/* eslint-disable-next-line max-len */}
-                                { rowObj.row.map((rowValue) => <td className={classes.tableCell}>{rowValue}</td>)}
+                                { rowObj.row.map((rowValue) => {
+                                  let outputHTML = (
+                                    <td className={classes.tableCell}>
+                                      {rowValue}
+                                    </td>
+                                  );
+                                  if (rowValue != null && (/{(.*)}/.test(rowValue))) {
+                                    const thAttrs = rowValue.match(/{(.*)}/).pop().split('$$');
+                                    const inlineStyleStr = thAttrs.find((thAttr) => thAttr.includes('style:')).replace('style:', '').replace(/'/g, '');
+                                    const inlineStyleMap = {};
+                                    inlineStyleStr.split(',').forEach((style) => {
+                                      // eslint-disable-next-line prefer-destructuring
+                                      inlineStyleMap[style.split(':')[0]] = style.split(':')[1];
+                                    });
+                                    const text = thAttrs.find((thAttr) => thAttr.includes('text:'));
+                                    outputHTML = (
+                                      <td className={classes.tableCell} style={inlineStyleMap}>
+                                        {text.replace('text:', '')}
+                                      </td>
+                                    );
+                                  }
+                                  return outputHTML;
+                                })}
                               </tr>
                             </>
                           )) }
@@ -171,6 +209,9 @@ const AboutBody = ({ classes, data }) => {
 };
 
 const styles = (theme) => ({
+  paddingTop60: {
+    paddingTop: '60px',
+  },
   container: {
     margin: '16px auto 16px auto',
     color: '#000000',
@@ -221,7 +262,7 @@ const styles = (theme) => ({
     },
   },
   tableDiv: {
-    marginTop: '45px',
+    marginTop: '0px',
   },
   table: {
     borderSpacing: '0',
@@ -249,6 +290,7 @@ const styles = (theme) => ({
     fontSize: '14px',
     padding: '8px 15px 8px 0px',
     borderBottom: '0.66px solid #087CA5',
+    width: '1px',
   },
   headerCell: {
     borderBottom: '4px solid #087CA5',

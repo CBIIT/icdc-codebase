@@ -17,7 +17,7 @@ import ProgramDetail from '../../pages/programDetail/programDetailController';
 import Cart from '../../pages/cart/cartController';
 import Home from '../../pages/landing/landingController';
 import About from '../../pages/about/aboutController';
-import GoogleAnalytics from '../GoogleAnalytics/GoogleAnalytics';
+import GA from '../../utils/googleAnalytics';
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
@@ -37,6 +37,7 @@ const Layout = ({ classes, isSidebarOpened }) => (
           className={classes.content}
         >
           <Route component={ScrollToTop} />
+          { GA.init() && <GA.RouteTracker /> }
           <Switch>
             <Route exact path="/ICDC/" component={Home} />
             <Route exact path="/" component={Home} />
@@ -63,7 +64,7 @@ const Layout = ({ classes, isSidebarOpened }) => (
 
             <Route component={Error} />
           </Switch>
-          <GoogleAnalytics />
+          {/* <GoogleAnalytics /> */}
           <Footer data={{ isSidebarOpened }} />
         </div>
       </>
