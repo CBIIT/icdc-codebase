@@ -31,7 +31,7 @@
           body: 
             - 
               row: 
-                - "Jeff Trent"
+                - {"style:'color:red'$$text:Jeff Trent"}
                 - "Chair, BPSC"
                 - "Translational Genomics Research Institute (TGen)"
                 - ~
