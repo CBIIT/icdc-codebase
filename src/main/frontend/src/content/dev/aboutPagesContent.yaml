@@ -31,7 +31,7 @@
           body: 
             - 
               row: 
-                - "{style:'color:red'$$text:Jeff Trent}"
+                - "{style:'color:red,backgroundColor:black,width:300px'$$text:Jeff Trent}"
                 - "Chair, BPSC"
                 - "Translational Genomics Research Institute (TGen)"
                 - ~
