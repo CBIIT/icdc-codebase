@@ -23,7 +23,7 @@
       table: 
         - 
           head: 
-            - name
+            - "{style:'color:red,backgroundColor:black,width:300px'$$text:name}"
             - position
             - affiliation
             - "Working Group"
