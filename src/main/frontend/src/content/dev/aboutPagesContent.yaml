@@ -23,7 +23,7 @@
       table: 
         - 
           head: 
-            - "{style:'color:red,backgroundColor:black,width:300px'$$text:name}"
+            - name
             - position
             - affiliation
             - "Working Group"
@@ -31,10 +31,10 @@
           body: 
             - 
               row: 
-                - "{style:'color:red,backgroundColor:black,width:300px'$$text:Jeff Trent}"
+                - "Jeff Trent"
                 - "Chair, BPSC"
                 - "Translational Genomics Research Institute (TGen)"
-                - ~
+                - "-"
             - 
               row: 
                 - "M.R. Chambers"
