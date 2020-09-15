@@ -266,16 +266,16 @@
                 - BPSC
             - 
               row: 
-                - "Roel Verhaak"
-                - "The Jackson Laboratory"
-                - External
-                - DGAB
-            - 
-              row: 
                 - "Jeff Trent"
                 - "Translational Genomics Research Institute (TGen)"
                 - External
                 - BPSC
+            - 
+              row: 
+                - "Roel Verhaak"
+                - "The Jackson Laboratory"
+                - External
+                - DGAB
             - 
               row: 
                 - "Shaying Zhao"
