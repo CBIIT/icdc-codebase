@@ -224,7 +224,7 @@
           body: 
             - 
               row: 
-                - $$[Matthew Breen](https://cvm.ncsu.edu/directory/breen-matthew/)$$
+                - "$$[Matthew Breen](https://cvm.ncsu.edu/directory/breen-matthew/)$$"
                 - "North Carolina State University"
                 - External
                 - DGAB
