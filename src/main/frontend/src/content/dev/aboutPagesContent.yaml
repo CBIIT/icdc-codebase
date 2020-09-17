@@ -16,7 +16,7 @@
     - 
       paragraph: "$$@Imaging@$$: Our overarching objective is to provide the comparative cancer research community with guidelines and best practices for the collection, formatting and reporting of imaging data collected from canine companion animals with naturally-occurring cancers into the Integrated Canine Data Commons (ICDC). This is to facilitate the utilization and analysis of such data by stakeholders in the cancer research community to facilitate dog-to-human translational research and advancement of knowledge in the comparative space."
     - 
-      paragraph: "$$@Genomics@$$: Provide an overview of next generation sequencing (NGS) study design, assays and analysis approaches (focusing on genomics and transcriptomics) utilized by diverse canine cancer research teams alongside annotation of validation studies, canine-specific tool needs, and parameters; Identify common elements across published analyses; Establish general principles in canine cancer genomics best practices modeled on human cancer genomics best practice principles; Identify gaps in canine cancer genomics best practices and propose solutions."
+      paragraph: "$$@Genomics@$$: Provide an overview of next generation sequencing (NGS) study design, assays and analysis approaches (focusing on genomics and transcriptomics) utilized by diverse canine cancer research teams alongside annotation of validation studies, canine-specific tool needs, and parameters; identify common elements across published analyses; establish general principles in canine cancer genomics best practices modeled on human cancer genomics best practice principles; identify gaps in canine cancer genomics best practices and propose solutions."
     - 
       table: 
         - 
@@ -128,15 +128,13 @@
 - 
   content: 
     - 
-      paragraph: "$$@Background:@$$"
+      paragraph: ""
     - 
-      paragraph: "The Integrated Canine Data Commons (ICDC) will receive data from many projects and provide the community with relevant access to that data. Not all requests to have ICDC receive data can be accommodated due to the ICDC’s focus and the effort and costs associated with bringing the data into the ICDC. Therefore, the ICDC must develop, document and adhere to a Data Governance Process."
-    - 
-      paragraph: "The Data Governance Advisory Board (DGAB) consists of 4 external members (all from ICDC Steering Committee), 2 NIH members (1 of whom is from CBIIT) and is supported by FNLCR staff. When researchers request their data ($${title:submission guide [PDF],link:https://github.com/CBIIT/icdc-codebase/raw/master/src/main/frontend/src/content/files/ICDC_DGAB_Guidelines_v1.3.pdf}$$) to be added to the ICDC to be shared with the community, the role of the DGAB is to advise the NCI on the suitability of request. The NCI makes the final decision on the request. The DGAB is chaired by a non-NIH member of ICDC Steering Committee. The DGAB meets at least quarterly to review and prioritize all open and complete requests."
+      paragraph: "The Data Governance Advisory Board (DGAB) consists of 4 external members (all from ICDC Steering Committee), 2 NIH members (1 of whom is from CBIIT) and is supported by FNLCR staff. The ICDC was established to further research on human cancers by enabling comparative analysis with canine cancer. If a researcher has data that will help this mission and they are willing to share that data in the ICDC, they will make a request through our ($${title:submission request process [PDF],link:https://github.com/CBIIT/icdc-codebase/raw/master/src/main/frontend/src/content/files/ICDC_DGAB_Guidelines_v1.3.pdf}$$). Not all requests to submit data can be accommodated due to the ICDC’s focus and the effort and costs associated with bringing the data into the ICDC. The ICDC’s data governance process uses the Data Governance Advisory Board to help prioritize the data and to advise the NCI on the suitability of request. The NCI makes the final decision on the request. The DGAB is chaired by a non-NIH member of ICDC Steering Committee and meets at least quarterly to review and prioritize all open and complete requests."
     - 
       paragraph: "The $$[current studies](https://wiki.nci.nih.gov/display/ICDC/Study+Priority+Listing)$$ and their priority are listed on the ICDC project wiki. This $${title:template,link:https://github.com/CBIIT/icdc-codebase/raw/master/src/main/frontend/src/content/files/ICDC_Data_Submission_Request_Template.docx}$$ can be used as an aid to the submitter."
-    - 
-      paragraph: "$$@DGAB Composition:@$$"
+    -
+      paragraph: ~
     - 
       table: 
         - 
@@ -224,7 +222,7 @@
           body: 
             - 
               row: 
-                - "$$[Matthew Breen](https://cvm.ncsu.edu/directory/breen-matthew/)$$"
+                - "Matthew Breen"
                 - "North Carolina State University"
                 - External
                 - DGAB
