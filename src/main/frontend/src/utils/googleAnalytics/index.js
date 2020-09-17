@@ -74,10 +74,6 @@ const sendEvent = (category, action, label, value = null) => {
     event.value = value;
   }
 
-  console.log('====================================');
-  console.log(event);
-  console.log('====================================');
-
   ReactGA.event(event);
 };
 
