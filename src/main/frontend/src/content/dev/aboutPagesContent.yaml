@@ -10,7 +10,7 @@
 - 
   content: 
     - 
-      paragraph: "The Best Practices SubCommittee (BPSC) has the responsibility for examining past and planned studies and identifying and recommending best practices that the Integrated Canine Data Commons (ICDC) will implement to streamline and harmonize data collection, standardize data formats and platforms, and manage and annotate data (especially clinical data). The ICDC will encompass clinical, pathologic, genomic, biomarker and imaging data. The BPSC consists of 8 external members, 5 NCI staff, 1 NHGRI staff and is supported by FNLCR staff. The BPSC has focused into four working groups: Imaging, Clinical/Pathology, Genomics, and Immunology."
+      paragraph: "The Best Practices SubCommittee (BPSC) has the responsibility for examining past and planned studies to identify and recommend best practices that the Integrated Canine Data Commons (ICDC) will implement to streamline and harmonize data collection, standardize data formats and platforms, and manage and annotate data (especially clinical data). We anticipate these recommendations will aid the wider community in study design and data collection and enhance their research to better enable human/canine data comparison. The ICDC will encompass many data types and is focused into four working groups: Imaging, Clinical/Pathology, Genomics, and Immunology. There are  8 external members, 5 NCI staff, 1 NHGRI staff and is supported by FNLCR staff."
     - 
       paragraph: "$$@Working Group Goals:@$$"
     - 
@@ -128,12 +128,8 @@
 - 
   content: 
     - 
-      paragraph: ""
+      paragraph: "The ICDC was established to further research on human cancers by enabling comparative analysis with canine cancer. If a researcher has data that will help this mission and they are willing to share that data in the ICDC, they will make a request using the process outlined $$[here](target:_self url:/#/submit type:0)$$. The request will be processed by ICDC’s Data Governance Advisory Board (DGAB) that consists of 4 external members (all from ICDC Steering Committee), 2 NIH members and is supported by FNLCR staff.  The DGAB prioritize’s the submission requests and advises the NCI on the suitability of request for inclusion in ICDC. The NCI makes the final decision on the request. The ICDC’s data governance process uses the The DGAB is chaired by a non-NIH member of ICDC Steering Committee and meets at least quarterly to review and prioritize all open and complete requests."
     - 
-      paragraph: "The Data Governance Advisory Board (DGAB) consists of 4 external members (all from ICDC Steering Committee), 2 NIH members (1 of whom is from CBIIT) and is supported by FNLCR staff. The ICDC was established to further research on human cancers by enabling comparative analysis with canine cancer. If a researcher has data that will help this mission and they are willing to share that data in the ICDC, they will make a request through our $${title:submission request process [PDF],link:https://github.com/CBIIT/icdc-codebase/raw/master/src/main/frontend/src/content/files/ICDC_DGAB_Guidelines_v1.3.pdf}$$. Not all requests to submit data can be accommodated due to the ICDC’s focus and the effort and costs associated with bringing the data into the ICDC. The ICDC’s data governance process uses the Data Governance Advisory Board to help prioritize the data and to advise the NCI on the suitability of request. The NCI makes the final decision on the request. The DGAB is chaired by a non-NIH member of ICDC Steering Committee and meets at least quarterly to review and prioritize all open and complete requests."
-    - 
-      paragraph: "The $$[current studies](https://wiki.nci.nih.gov/display/ICDC/Study+Priority+Listing)$$ and their priority are listed on the ICDC project wiki. This $${title:template,link:https://github.com/CBIIT/icdc-codebase/raw/master/src/main/frontend/src/content/files/ICDC_Data_Submission_Request_Template.docx}$$ can be used as an aid to the submitter."
-    -
       paragraph: ~
     - 
       table: 
@@ -331,7 +327,7 @@
                 - "Anju Singh"
                 - IOB/DTP/DCTD/NCI
                 - NIH
-                - "BPSC"
+                - BPSC
             - 
               row: 
                 - "Connie Sommers"
