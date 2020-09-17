@@ -15,6 +15,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { toggleCheckBox } from '../../../pages/dashboard/store/dashboardAction';
 import { Typography } from '../../Wrappers/Wrappers';
+import GA from '../../../utils/googleAnalytics';
 
 const FacetPanel = (classes) => {
   // data from store
@@ -31,10 +32,14 @@ const FacetPanel = (classes) => {
   const [groupExpanded, setGroupExpanded] = React.useState(['case']);
 
   const handleChange = (panel) => (event, isExpanded) => {
+    const panelStatus = isExpanded ? 'expand' : 'collapse';
+    GA.sendEvent('Facets', panelStatus, `${panel} Panel`);
     setExpanded(isExpanded ? panel : false);
   };
 
   const handleGroupChange = (panel) => (event, isExpanded) => {
+    const groupStatus = isExpanded ? 'expand' : 'collapse';
+    GA.sendEvent('Facets', groupStatus, `${panel} Group`);
     const groups = _.cloneDeep(groupExpanded);
     if (isExpanded) {
       groups.push(panel);
@@ -50,6 +55,11 @@ const FacetPanel = (classes) => {
 
   const handleToggle = (value) => () => {
     const valueList = value.split('$$');
+
+    // Note: Registering events based on Group Dimension(aka Panel) gets filterd.
+    // We are not tracking which specific values are being filter.
+    GA.sendEvent('Facets', 'Filter', valueList[1]);
+
     // dispatch toggleCheckBox action
     dispatch(toggleCheckBox([{
       groupName: valueList[1],
