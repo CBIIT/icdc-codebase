@@ -33,7 +33,7 @@
           body: 
             - 
               row: 
-                - "$$[Jeff Trent](target:_blank url:/#/crdc)$$"
+                - "Jeff Trent"
                 - "Chair, BPSC"
                 - "Translational Genomics Research Institute (TGen)"
                 - "-"
@@ -224,7 +224,7 @@
           body: 
             - 
               row: 
-                - "Matthew Breen"
+                - $$[Matthew Breen](target:_blank url:https://cvm.ncsu.edu/directory/breen-matthew/)$$
                 - "North Carolina State University"
                 - External
                 - DGAB
