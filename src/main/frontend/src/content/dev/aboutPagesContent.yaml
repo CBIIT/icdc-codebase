@@ -33,7 +33,7 @@
           body: 
             - 
               row: 
-                - "Jeff Trent"
+                - "$$[Jeff Trent](target:_blank url:/#/crdc)$$"
                 - "Chair, BPSC"
                 - "Translational Genomics Research Institute (TGen)"
                 - "-"
