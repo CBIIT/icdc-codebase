@@ -31,7 +31,8 @@ const CustomDropdownMenu = ({ classes, handleClick }) => (
           to="/DGAB"
           onClick={handleClick}
         >
-          - Data Governance Advisory Board
+          <div>- Data Governance </div>
+          <div className={classes.paddingLeft10}>Advisory Board (DGAB)</div>
         </NavLink>
         <NavLink
           className={cn(classes.sublink, classes.link)}
@@ -39,7 +40,8 @@ const CustomDropdownMenu = ({ classes, handleClick }) => (
           to="/BPSC"
           onClick={handleClick}
         >
-          - Best Practices Sub-Committee
+          <div>- Best Practices</div>
+          <div className={classes.paddingLeft10}> Sub-Committee (BPSC)</div>
         </NavLink>
         <NavLink
           className={classes.link}
@@ -90,32 +92,35 @@ const CustomDropdownMenu = ({ classes, handleClick }) => (
 const styles = (theme) => ({
   paper: {
     background: '#309EC4',
-    width: '220px',
-    padding: '0px 16px 16px 16px',
+    width: '200px',
+    padding: '0px 18px 18px 18px',
+    marginLeft: '15px',
     position: 'absolute',
-    marginTop: '-5px',
+    marginTop: '-1px',
     borderRadius: '0',
   },
   sublink: {
+    fontWeight: '500 !important',
+  },
+  paddingLeft10: {
     paddingLeft: '10px',
-    fontSize: '11px !important',
   },
   link: {
     textDecoration: 'none',
     color: 'black',
     fontFamily: theme.custom.fontFamilyRaleway,
-    fontSize: '13px',
-    fontWeight: '800',
+    fontSize: '14px',
+    fontWeight: '900',
     lineSpacing: '1px',
     display: 'block',
-    marginTop: '13px',
+    marginTop: '10px',
     '&:hover': {
       cursor: 'pointer',
       color: 'white',
     },
   },
   aboutItemsWrapper: {
-    maxWidth: '190px',
+    maxWidth: '180px',
   },
 });
 
