@@ -263,7 +263,7 @@ const styles = (theme) => ({
   },
   title: {
     color: '#0B3556',
-    fontWeight: 'bold',
+    fontWeight: 'bolder',
   },
   email: {
     color: '#0296C9',
