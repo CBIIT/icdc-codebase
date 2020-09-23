@@ -322,35 +322,6 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>npm install mui-custom-datatables master</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<configuration>
-							<arguments>install save https://github.com/skiran86/mui-custom-datatables/tarball/master</arguments>
-						</configuration>
-					</execution>
-					<execution>
-						<id>npm install mui-custom-datatables modules</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<configuration>
-							<workingDirectory>src/main/frontend/node_modules/mui-custom-datatables</workingDirectory>
-							<arguments>install </arguments>
-						</configuration>
-					</execution>
-					<execution>
-						<id>npm install mui-custom-datatables run build</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<configuration>
-							<workingDirectory>src/main/frontend/node_modules/mui-custom-datatables</workingDirectory>
-							<arguments>run build </arguments>
-						</configuration>
-					</execution>
-					<execution>
 						<id>npm run build</id>
 						<goals>
 							<goal>npm</goal>
