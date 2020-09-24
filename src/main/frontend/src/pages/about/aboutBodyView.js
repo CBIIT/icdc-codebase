@@ -3,6 +3,7 @@ import { Grid, withStyles, Link } from '@material-ui/core';
 import Header from '../../components/About/HeaderView';
 import Stats from '../../components/Stats/AllStatsController';
 import externalIcon from '../../assets/about/About-ExternalLink.svg';
+import tableExternalIcon from '../../assets/about/About-Table-ExternalLink.svg';
 
 const AboutBody = ({ classes, data }) => {
   function boldText(text) {
@@ -172,6 +173,7 @@ const AboutBody = ({ classes, data }) => {
                                       {rowValue}
                                     </td>
                                   );
+                                  // add inline style
                                   if (rowValue != null && (/{(.*)}/.test(rowValue))) {
                                     const thAttrs = rowValue.match(/{(.*)}/).pop().split('$$');
                                     const inlineStyleStr = thAttrs.find((thAttr) => thAttr.includes('style:')).replace('style:', '').replace(/'/g, '');
@@ -184,6 +186,39 @@ const AboutBody = ({ classes, data }) => {
                                     outputHTML = (
                                       <td className={classes.tableCell} style={inlineStyleMap}>
                                         {text.replace('text:', '')}
+                                      </td>
+                                    );
+                                  }
+
+                                  if (rowValue != null && ((/\[(.+)\]\((.+)\)/g.test(rowValue)) || (/\((.+)\)\[(.+)\]/g.test(rowValue)))) {
+                                    const title = rowValue.match(/\[(.*)\]/).pop();
+                                    const linkAttrs = rowValue.match(/\((.*)\)/).pop().split(' ');
+                                    const target = linkAttrs.find((link) => link.includes('target:'));
+                                    const url = linkAttrs.find((link) => link.includes('url:'));
+                                    const type = linkAttrs.find((link) => link.includes('type:')); // 0 : no img
+                                    const link = (
+                                      <Link
+                                        title={title}
+                                        target={target ? target.replace('target:', '') : '_blank'}
+                                        rel="noreferrer"
+                                        href={url ? url.replace('url:', '') : rowValue.match(/\((.*)\)/).pop()}
+                                        color="inherit"
+                                        className={classes.tableLink}
+                                      >
+                                        {title}
+                                      </Link>
+                                    );
+                                    outputHTML = (
+                                      <td className={classes.tableCell}>
+                                        {link}
+                                        {type ? '' : (
+                                          <img
+                                            src={tableExternalIcon}
+                                            alt="outbounnd web site icon"
+                                            className={classes.tablelinkIcon}
+                                          />
+                                        )}
+
                                       </td>
                                     );
                                   }
@@ -221,8 +256,6 @@ const styles = (theme) => ({
     maxWidth: '1440px',
   },
   text: {
-    // height: '476px',
-    // width: '675px',
     color: '#000000',
     fontFamily: theme.custom.fontFamilySans,
     fontSize: '15px',
@@ -230,7 +263,7 @@ const styles = (theme) => ({
   },
   title: {
     color: '#0B3556',
-    fontWeight: 'bold',
+    fontWeight: 'bolder',
   },
   email: {
     color: '#0296C9',
@@ -254,12 +287,21 @@ const styles = (theme) => ({
     verticalAlign: 'sub',
     margin: '0px 0px 0px 2px',
   },
+  tablelinkIcon: {
+    width: '15px',
+    verticalAlign: 'sub',
+    margin: '0px 0px 0px 2px',
+  },
   link: {
     color: '#0296C9',
     fontWeight: 'bolder',
     '&:hover': {
       color: '#0296C9',
     },
+  },
+  tableLink: {
+    fontWeight: 'bolder',
+    textDecoration: 'underline',
   },
   tableDiv: {
     marginTop: '0px',

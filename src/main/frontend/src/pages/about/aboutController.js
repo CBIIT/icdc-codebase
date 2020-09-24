@@ -10,6 +10,8 @@ import committeeImg from '../../assets/about/Photo-About_SteeringCommittee.jpg';
 import supportImg from '../../assets/about/About_Support.jpg';
 import submitDataImg from '../../assets/about/Photo-About_SubmittingData.jpg';
 import AboutBody from './aboutBodyView';
+import BPSCImg from '../../assets/about/Photo-About_BPSC.jpg';
+import DAGBImg from '../../assets/about/Photo-About_DGAB.jpg';
 
 const ABOUT_CONTENT_URL = process.env.REACT_APP_ABOUT_CONTENT_URL;
 
@@ -41,16 +43,16 @@ const About = ({ match }) => {
           break;
         case '/purpose':
           supportObj.image = purposeImg;
-          supportObj.imageAlt = 'purpose';
+          supportObj.imageAlt = 'Man holding dog closely';
           break;
         case '/steeringCommittee':
           supportObj.image = committeeImg;
           break;
         case '/DGAB':
-          supportObj.image = committeeImg;
+          supportObj.image = DAGBImg;
           break;
         case '/BPSC':
-          supportObj.image = committeeImg;
+          supportObj.image = BPSCImg;
           break;
         case '/support':
           supportObj.image = supportImg;

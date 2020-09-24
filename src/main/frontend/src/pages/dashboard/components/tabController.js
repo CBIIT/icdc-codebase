@@ -17,6 +17,25 @@ import TabView from './tabView';
 import SuccessOutlinedIcon from '../../../utils/SuccessOutlined';
 import TabThemeProvider from './tabThemeConfig';
 import TabLabel from './tabLabel';
+import GA from '../../../utils/googleAnalytics';
+
+const tabIndex = {
+  0: {
+    title: 'Cases',
+    primaryColor: '#F48439',
+    secondaryColor: '#FFDFB8',
+  },
+  1: {
+    title: 'Samples',
+    primaryColor: '#05C5CC',
+    secondaryColor: '#C9F1F1',
+  },
+  2: {
+    title: 'Files',
+    primaryColor: '#2446C6',
+    secondaryColor: '#E1E5FF',
+  },
+};
 
 function TabContainer({ children, dir }) {
   return (
@@ -36,6 +55,12 @@ const tabController = (classes) => {
     ? state.dashboard.datatable : {}));
 
   const handleTabChange = (event, value) => {
+    if (currentTab !== value) {
+      const currentTabTitle = tabIndex[currentTab].title;
+      const newTabTitle = tabIndex[value].title;
+      GA.sendEvent('Tab Change', tabIndex[value].title, `${currentTabTitle} -> ${newTabTitle}`, null);
+    }
+
     setCurrentTab(value);
   };
 
@@ -51,24 +76,6 @@ const tabController = (classes) => {
   function closeSnack() {
     setsnackbarState({ open: false });
   }
-
-  const tabIndex = {
-    0: {
-      title: 'Cases',
-      primaryColor: '#F48439',
-      secondaryColor: '#FFDFB8',
-    },
-    1: {
-      title: 'Samples',
-      primaryColor: '#05C5CC',
-      secondaryColor: '#C9F1F1',
-    },
-    2: {
-      title: 'Files',
-      primaryColor: '#2446C6',
-      secondaryColor: '#E1E5FF',
-    },
-  };
 
   function getBorderStyle() {
     const style = '3px solid';
