@@ -44,18 +44,22 @@ const ProgramCard = ({
 
             </span>
 
-            <span className={classes.paddingLeft15}>
-              <a href={`${data.program_external_url}`} target="icdc" className={classes.outLink}>
-                {data.program_external_url}
-              </a>
-            </span>
-            <span className={classes.paddingLeft5}>
-              <img
-                src={externalIcon}
-                alt="dog  for program detail"
-                className={classes.linkIcon}
-              />
-            </span>
+            { data.program_external_url ? (
+              <span>
+                <span className={classes.paddingLeft15}>
+                  <a href={`${data.program_external_url}`} target="icdc" className={classes.outLink}>
+                    {data.program_external_url}
+                  </a>
+                </span>
+                <span className={classes.paddingLeft5}>
+                  <img
+                    src={externalIcon}
+                    alt="dog  for program detail"
+                    className={classes.linkIcon}
+                  />
+                </span>
+              </span>
+            ) : ''}
 
           </Grid>
         </Grid>
