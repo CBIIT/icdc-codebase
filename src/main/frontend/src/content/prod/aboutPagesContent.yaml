@@ -270,9 +270,7 @@
   page: /support
   title: Support
 - 
-  content: 
-    - 
-      paragraph: "$$@Happy National Dog Day!@$$"
+  content:
     -
       paragraph: "$$*•	Pet owners:*$$ Visit NCI’s $$[Comparative Oncology Program](https://ccr.cancer.gov/comparative-oncology-program)$$ for more resources, blogs, and information about canine clinical trials and how your pet can enroll."
     -
