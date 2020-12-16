@@ -389,7 +389,7 @@
     - 
       paragraph: "$$#CLOUD RESOURCES:#$$"
     - 
-      paragraph: "The CRDC has three Cloud Resources ($$[Seven Bridges Cancer Genomics Cloud ](http://www.cancergenomicscloud.org/)$$,$$[ISB Cancer Genomics Cloud ](https://isb-cgc.appspot.com/)$$, $$[Broad Firecloud ](https://firecloud.terra.bio/)$$), each providing analysis platforms for the community to use when working with Data Commons data."
+      paragraph: "The CRDC has three Cloud Resources ($$[Seven Bridges Cancer Genomics Cloud ](http://www.cancergenomicscloud.org/)$$,$$[ISB Cancer Gateway in the Cloud ](https://isb-cgc.appspot.com/)$$, $$[Broad Firecloud ](https://firecloud.terra.bio/)$$), each providing analysis platforms for the community to use when working with Data Commons data."
     - 
       paragraph: "These cloud-based platforms eliminate the need for researchers to download and store extremely large data sets by allowing them to bring analysis tools to the data in the cloud, instead of the traditional process of bringing the data to the tools on local hardware. The Cloud Resources also provide access to on-demand computational capacity to analyze these data. The Cloud Resources allow users to run best practice tools and pipelines already implemented or upload their own data or analysis methods to workspaces."
     - 
