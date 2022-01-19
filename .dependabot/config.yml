@@ -1,0 +1,8 @@
+version: 1
+update_configs:
+  - package_manager: "javascript"
+    directory: "/src/main/frontend"
+    update_schedule: "weekly"
+    allowed_updates:
+      - match:
+          update_type: "security"

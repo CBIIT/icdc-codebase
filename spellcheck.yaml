@@ -1,0 +1,15 @@
+matrix:
+- name: YAML
+  sources:
+  - '**/*.yaml'
+  expect_match: false
+  aspell:
+    lang: en
+  dictionary:
+    wordlists:
+    - doc/custom-dictionary.txt
+    output: build/dictionary/wordlist.dic
+    encoding: utf-8
+  pipeline:
+  - pyspelling.filters.text:
+      convert_encoding: utf-8
